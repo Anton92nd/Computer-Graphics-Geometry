@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace CG_G
 {
-	class Program
+	class MainGraphics
 	{
 		static void Main(string[] args)
 		{
+			var form = new MainForm();
+			form.ShowDialog();
 		}
 	}
 }
