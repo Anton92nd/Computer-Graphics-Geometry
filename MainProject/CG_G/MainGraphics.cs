@@ -8,6 +8,7 @@ namespace CG_G
 {
 	class MainGraphics
 	{
+		[STAThread]
 		static void Main(string[] args)
 		{
 			var form = new MainForm();

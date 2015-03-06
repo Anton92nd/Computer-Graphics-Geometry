@@ -42,11 +42,18 @@ namespace CG_G
 		{
 			var bmp = new Bitmap(ClientSize.Width, ClientSize.Height);
 			Console.WriteLine(bmp.Width + " " + bmp.Height);
-			double a, b, c;
-			GetParameters(out a, out b, out c);
-			var halfWidth = Math.Abs(c) + 10.0;
-			DrawFunctionPlot(bmp, x => Math.Sin(a * x + b) / (x - c), -halfWidth, halfWidth, -5.0, 5.0);
 			return bmp;
+		}
+
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			var openDialog = new OpenFileDialog();
+			if (openDialog.ShowDialog() == DialogResult.OK)
+			{
+				button1.Enabled = true;
+				Console.WriteLine(openDialog.FileName);
+			}
 		}
 	}
 }
