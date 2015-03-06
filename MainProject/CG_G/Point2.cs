@@ -41,5 +41,20 @@ namespace CG_G
 		{
 			return a.x*b.x + a.y*b.y;
 		}
+
+		public static Point2 operator *(Point2 v, double k)
+		{
+			return new Point2(v.x*k, v.y*k);
+		}
+
+		public static Point2 operator /(Point2 v, double k)
+		{
+			return new Point2(v.x/k, v.y/k);
+		}
+
+		public double Length()
+		{
+			return Math.Sqrt(x*x + y*y);
+		}
 	}
 }

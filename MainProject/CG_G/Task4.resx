@@ -117,4 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Формат файла входных данных:
+N //описание многоугольника (обход против часовой стрелки)
+x1 y1
+x2 y2
+... ...
+xN yN
+
+x y // координаты угла прямоугольника
+xH yH //вектор высоты прямоугольника
+xW yW //вектор ширины прямоугольника</value>
+  </data>
 </root>

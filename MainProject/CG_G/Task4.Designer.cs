@@ -28,13 +28,14 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Task4));
 			this.label1 = new System.Windows.Forms.Label();
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.button2 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
@@ -55,9 +56,7 @@
 			this.richTextBox1.ReadOnly = true;
 			this.richTextBox1.Size = new System.Drawing.Size(357, 167);
 			this.richTextBox1.TabIndex = 2;
-			this.richTextBox1.Text = "Формат файла входных данных:\nN //описание многоугольника (обход против часовой ст" +
-    "релки)\nx1 y1\nx2 y2\n... ...\nxN yN\n\nX1 X2 //описание прямоугольника (обход против " +
-    "часовой стрелки)\nX2 Y2\nX3 Y3\nX4 Y4";
+			this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
 			// 
 			// panel1
 			// 
@@ -71,6 +70,14 @@
 			this.panel1.Size = new System.Drawing.Size(481, 306);
 			this.panel1.TabIndex = 3;
 			// 
+			// textBox1
+			// 
+			this.textBox1.Location = new System.Drawing.Point(20, 40);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(210, 20);
+			this.textBox1.TabIndex = 5;
+			this.textBox1.Text = "Choose file";
+			// 
 			// button2
 			// 
 			this.button2.Location = new System.Drawing.Point(236, 38);
@@ -83,12 +90,14 @@
 			// 
 			// button1
 			// 
+			this.button1.Enabled = false;
 			this.button1.Location = new System.Drawing.Point(20, 254);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(94, 33);
 			this.button1.TabIndex = 3;
 			this.button1.Text = "Нарисовать";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// pictureBox1
 			// 
@@ -97,14 +106,6 @@
 			this.pictureBox1.Size = new System.Drawing.Size(100, 50);
 			this.pictureBox1.TabIndex = 4;
 			this.pictureBox1.TabStop = false;
-			// 
-			// textBox1
-			// 
-			this.textBox1.Location = new System.Drawing.Point(20, 40);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(210, 20);
-			this.textBox1.TabIndex = 5;
-			this.textBox1.Text = "TestsTask4/Test1.txt";
 			// 
 			// Task4
 			// 
@@ -115,6 +116,7 @@
 			this.Controls.Add(this.panel1);
 			this.Name = "Task4";
 			this.Text = "Многоугольник и прямоугольник";
+			this.ResizeEnd += new System.EventHandler(this.Task4_ResizeEnd);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
