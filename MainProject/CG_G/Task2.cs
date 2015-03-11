@@ -103,6 +103,9 @@ namespace CG_G
 			DrawOXY(bmp, g, x1, x2, y1, y2);
 			var screenOX = bmp.Height/2;
 			var screenOY = bmp.Width/2;
+			var plotOY = ConvertFromScreenToPlot(screenOY, x1, x2, bmp.Width);
+			var yPlt = b*Math.Sqrt(1 + plotOY*plotOY/(a*a));
+			var last = new Point(0, bmp.Height - ConvertFromPlotToScreen(yPlt, y1, y2, bmp.Height) - screenOX);
 			for (var xScreen = screenOY; xScreen < bmp.Width; xScreen++)
 			{
 				var xPlot = ConvertFromScreenToPlot(xScreen, x1, x2, bmp.Width);
@@ -111,10 +114,11 @@ namespace CG_G
 				if (yScreen <= 0)
 					break;
 				var v = new Point(xScreen - screenOY, yScreen - screenOX);
-				bmp.SetPixel(screenOY + v.X, screenOX + v.Y, Color.Blue);
-				bmp.SetPixel(screenOY + v.X, screenOX - v.Y, Color.Blue);
-				bmp.SetPixel(screenOY - v.X, screenOX + v.Y, Color.Blue);
-				bmp.SetPixel(screenOY - v.X, screenOX - v.Y, Color.Blue);
+				g.DrawLine(Pens.Blue, screenOY + last.X, screenOX + last.Y, screenOY + v.X, screenOX + v.Y);
+				g.DrawLine(Pens.Blue, screenOY - last.X, screenOX + last.Y, screenOY - v.X, screenOX + v.Y);
+				g.DrawLine(Pens.Blue, screenOY + last.X, screenOX - last.Y, screenOY + v.X, screenOX - v.Y);
+				g.DrawLine(Pens.Blue, screenOY - last.X, screenOX - last.Y, screenOY - v.X, screenOX - v.Y);
+				last = v;
 			}
 			return bmp;
 		}
