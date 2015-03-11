@@ -54,7 +54,8 @@ namespace CG_G
 				}).ToList();
 			var remains = lines.Skip(n).Aggregate("", (sum, s) => sum + " " + s);
 			var lst = remains.Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries).Select(Double.Parse).ToList();
-			polygon.Add(polygon[0]);
+			if (polygon.Count > 0)
+				polygon.Add(polygon[0]);
 			O = new Point2(lst[0], lst[1]);
 			h = new Point2(lst[2], lst[3]);
 			w = new Point2(lst[4], lst[5]);
@@ -87,22 +88,25 @@ namespace CG_G
 			return false;
 		}
 
-		private Point2 GetIntersection(Point2 A, Point2 B)
+		private List<Point2> GetIntersection(Point2 A, Point2 B)
 		{
+			var result = new List<Point2>();
 			foreach (var segment in rectangle)
 			{
-				Point2 result;
-				if (Intersection(A, B, segment[0], segment[1], out result))
+				Point2 res;
+				if (Intersection(A, B, segment[0], segment[1], out res)) 
 				{
-					return result;
+					result.Add(res);
 				}
 			}
-			return null;
+			return result;
 		}
 
-		List<Point2[]> FindInsideSegments()
+		private List<Point2[]> FindInsideSegments()
 		{
 			var result = new List<Point2[]>();
+			if (polygon.Count == 0)
+				return result;
 			var lastInside = PointInside(polygon[0]);
 			for (var i = 0; i < polygon.Count - 1; i++)
 			{
@@ -113,8 +117,16 @@ namespace CG_G
 				}
 				if (nextInside != lastInside)
 				{
-					var intersectPoint = GetIntersection(polygon[i], polygon[i + 1]);
+					var intersectPoint = GetIntersection(polygon[i], polygon[i + 1]).ToList()[0];
 					result.Add(lastInside ? new [] {polygon[i], intersectPoint} : new[] {intersectPoint, polygon[i + 1]});
+				}
+				if (!nextInside && !lastInside)
+				{
+					var points = GetIntersection(polygon[i], polygon[i + 1]);
+					if (points.Count > 1)
+					{
+						result.Add(new [] {points[0], points[1]});
+					}
 				}
 				lastInside = nextInside;
 			}

@@ -108,8 +108,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Formula.PNG" />
+    <Content Include="Formula2.PNG" />
+    <Content Include="TestsTask4\EmptyTest.txt" />
     <Content Include="TestsTask4\Test1.txt" />
     <Content Include="TestsTask4\Test2.txt" />
+    <Content Include="TestsTask4\Test3.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

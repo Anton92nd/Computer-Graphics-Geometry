@@ -53,5 +53,11 @@ namespace CG_G
 			var task4 = new Task4();
 			task4.Show();
 		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			var task2 = new Task2();
+			task2.Show();
+		}
 	}
 }
