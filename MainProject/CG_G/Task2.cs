@@ -86,8 +86,8 @@ namespace CG_G
 
 		private void GetParameters(out double a, out double b)
 		{
-			a = double.Parse(textBox1.Text);
-			b = double.Parse(textBox2.Text);
+			a = Math.Abs(double.Parse(textBox1.Text));
+			b = Math.Abs(double.Parse(textBox2.Text));
 		}
 
 		private Bitmap DrawImage()
