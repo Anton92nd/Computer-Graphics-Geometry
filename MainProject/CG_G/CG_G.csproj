@@ -121,6 +121,9 @@
     <EmbeddedResource Include="Task5.resx">
       <DependentUpon>Task5.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Task6.resx">
+      <DependentUpon>Task6.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Formula.PNG" />

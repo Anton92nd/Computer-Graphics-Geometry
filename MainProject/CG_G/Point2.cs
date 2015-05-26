@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CG_G
 {
-	class Point2
+	public class Point2
 	{
 		public readonly double x, y;
 
