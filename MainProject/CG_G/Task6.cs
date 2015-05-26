@@ -78,8 +78,14 @@ namespace CG_G
 
 		private void DrawHigherCylinder(Bitmap bmp, Graphics g)
 		{
+			var size = bmp.Height;
 			var pen = Pens.Red;
 			var lowerRad = new Point2(lowerRadius.y, lowerRadius.z);
+			var planeP = ConvertToPlane(lowerRadius);
+			var planeQ = ConvertToPlane(lowerRadius + new Point3(AxeLength, 0, 0));
+			var screenP = ConvertToScreen(size, planeP);
+			var screenQ = ConvertToScreen(size, planeQ);
+			g.DrawLine(new Pen(Color.Blue, 2F), screenQ, screenP);
 			var higherRad = lowerRad.Resize(RadiusHigher);
 			var deltaRad = new Point3(0, lowerRad.x, lowerRad.y) - new Point3(0, higherRad.x, higherRad.y);
 			var deltaX = Lower.x - Higher.x;
@@ -89,7 +95,6 @@ namespace CG_G
 			const int anglePartsCount = 9;
 			const int heightPartsCount = 10;
 			const double angle = Math.PI / 2.0;
-			var size = bmp.Height;
 			for (var i = 0; i <= anglePartsCount; i++)
 			{
 				var currentV = higherRad.Rotate(i*(angle/anglePartsCount));
