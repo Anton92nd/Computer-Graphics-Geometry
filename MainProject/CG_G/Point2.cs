@@ -56,5 +56,16 @@ namespace CG_G
 		{
 			return Math.Sqrt(x*x + y*y);
 		}
+
+		public Point2 Rotate(double alpha)
+		{
+			return new Point2(x*Math.Cos(alpha) - y*Math.Sin(alpha), x*Math.Sin(alpha) + y*Math.Cos(alpha));
+		}
+
+		public Point2 Resize(double size = 1.0)
+		{
+			var len = Length();
+			return new Point2(x/len*size, y/len*size);
+		}
 	}
 }
