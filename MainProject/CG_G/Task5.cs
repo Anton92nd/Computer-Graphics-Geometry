@@ -122,5 +122,11 @@ namespace CG_G
 				Convert.ToInt32((point.x - leftX) / (rightX - leftX) * size), 
 				Convert.ToInt32((point.y - lowY) / (topY - lowY) * size));
 		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			var task6 = new Task6();
+			task6.Show();
+		}
 	}
 }
